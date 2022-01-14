@@ -38,6 +38,7 @@ import org.springframework.samples.petclinic.recoveryroom.RecoveryRoom;
 @Table(name = "visits")
 public class Visit extends BaseEntity {
 
+	
 	/**
 	 * Holds value of property date.
 	 */
@@ -58,7 +59,21 @@ public class Visit extends BaseEntity {
 	@ManyToOne
 	@JoinColumn(name = "pet_id")
 	private Pet pet;
+	
+	
+	
 
+	// CREADA PARA EL CONTROL CHECK 
+	
+	@ManyToOne(optional = true)
+	@JoinColumn(name = "recovery_room")
+	private RecoveryRoom recoveryRoom;
+	
+	// -----------------------------------
+	
+	
+	
+	
 	/**
 	 * Creates a new instance of Visit for the current date
 	 */
@@ -114,13 +129,15 @@ public class Visit extends BaseEntity {
 		this.pet = pet;
 	}
 
+	
+	// A IMPLEMENTAR EN EL CONTROL CHECK:
+	
 	public RecoveryRoom getRecoveryRoom() {
-		// To be implemented
-		return null;
+		return this.recoveryRoom;
 	}
 
 	public void setRecoveryRoom(RecoveryRoom room) {
-		// To be implemented
+		this.recoveryRoom = room;
 	}
 
 }
